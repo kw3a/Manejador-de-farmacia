@@ -223,9 +223,8 @@ public class frmRegistroCompras extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        try{
+        
             
-            Statement sql=Conexion.getConexion().createStatement();
             
             String producto = txtProducto.getText();
             String Proovedor=cboProveedores.getSelectedItem().toString();
@@ -234,16 +233,9 @@ public class frmRegistroCompras extends javax.swing.JFrame {
             String preciounitario =txtPrecioUnitario.getText();
             String preciototal=lblPrecioTotal.getText();
             
- 
-            String query ="INSERT INTO compras (producto,cantidad) "+ "VALUES('"+producto+"', "+cantidad+")";
-        
-            sql.executeUpdate(query);
-                        
-            JOptionPane.showMessageDialog(null, "Un nuevo cocktel ha sido ingresado");
-        }catch(SQLException ex){
-        
-            JOptionPane.showMessageDialog(null,ex.toString() );
-        }
+            //subir a la Base de Datos
+            //registrarCompra();
+            
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProveedoresActionPerformed
@@ -261,6 +253,11 @@ public class frmRegistroCompras extends javax.swing.JFrame {
      int TotalCompra=PrecioUnitario*Cantidad;
      lblPrecioTotal.setText(" "+TotalCompra+" Bs");
      
+    }
+    
+    public void registrarCompra(){
+    
+    
     }
     /**
      * @param args the command line arguments
