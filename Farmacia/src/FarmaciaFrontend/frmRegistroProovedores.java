@@ -32,7 +32,7 @@ public class frmRegistroProovedores extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtEmpresa = new javax.swing.JTextField();
-        txtProducto = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
@@ -54,7 +54,7 @@ public class frmRegistroProovedores extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel3.setText("PRODUCTO");
+        jLabel3.setText("DIRECCION");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel5.setText("EMPRESA");
@@ -91,7 +91,7 @@ public class frmRegistroProovedores extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNombre)
                             .addComponent(txtEmpresa)
-                            .addComponent(txtProducto)
+                            .addComponent(txtDireccion)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
@@ -114,7 +114,7 @@ public class frmRegistroProovedores extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
@@ -185,9 +185,9 @@ public class frmRegistroProovedores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtProducto;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

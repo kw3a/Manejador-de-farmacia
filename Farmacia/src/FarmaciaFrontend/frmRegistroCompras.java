@@ -195,18 +195,10 @@ public class frmRegistroCompras extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Proovedor=cboProveedores.getSelectedItem().toString();
             System.out.println(Proovedor);
+              
+        
         
     }//GEN-LAST:event_cboProveedoresActionPerformed
-
-    private void btnBuscarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProveedoresActionPerformed
-        // TODO add your handling code here:
-        String productoBuscado=txtProducto.getText();
-        String proovedores[]={"proveedor1"+productoBuscado,"proovedor2"+productoBuscado,"proovedor3"+productoBuscado,
-                              "proovedor4"+productoBuscado,"proovedor5"+productoBuscado,"proovedor6"+productoBuscado};
-        DefaultComboBoxModel comboModel=new DefaultComboBoxModel(proovedores);
-        cboProveedores.setModel(comboModel);
-        
-    }//GEN-LAST:event_btnBuscarProveedoresActionPerformed
 
     private void txtPrecioUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioUnitarioActionPerformed
         // TODO add your handling code here:
@@ -253,6 +245,15 @@ public class frmRegistroCompras extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,ex.toString() );
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnBuscarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProveedoresActionPerformed
+        // TODO add your handling code here:
+  String productoBuscado=txtProducto.getText();
+        String proovedores[]={"proveedor1"+productoBuscado,"proovedor2"+productoBuscado,"proovedor3"+productoBuscado,
+                              "proovedor4"+productoBuscado,"proovedor5"+productoBuscado,"proovedor6"+productoBuscado};
+        DefaultComboBoxModel comboModel=new DefaultComboBoxModel(proovedores);
+        cboProveedores.setModel(comboModel);
+    }//GEN-LAST:event_btnBuscarProveedoresActionPerformed
 
     public void calcularPreciototal(){
      int PrecioUnitario=Integer.parseInt(txtPrecioUnitario.getText());
