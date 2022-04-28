@@ -10,12 +10,14 @@ import java.sql.SQLException;
 
 public class Conexion {
      public static Connection getConexion(){
-	String conexionUrl = "jdbc:sqlserver://localhost:1433;"
+	String conexionUrl = "jdbc:mysql://localhost:3306;"
 	+ "database = productos;" 
-	+ "user = sa;"
-	+ "password = sasa;"
+	+ "user = root;"
+	+ "password = admin;"
 	+ "loginTimeout= 30;";
-
+        
+              
+                
 	try{
 	     Connection con = DriverManager.getConnection(conexionUrl);
 	     return con;
