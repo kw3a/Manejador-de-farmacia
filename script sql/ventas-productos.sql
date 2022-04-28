@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     27/4/2022 19:06:49                           */
+/* Created on:     27/4/2022 20:03:25                           */
 /*==============================================================*/
 
 
@@ -11,6 +11,8 @@ drop table if exists LOTE;
 drop table if exists MEDICAMENTO;
 
 drop table if exists PEDIDO;
+
+drop table if exists PROVEEDOR;
 
 drop table if exists VARIEDAD;
 
@@ -57,9 +59,21 @@ create table MEDICAMENTO
 create table PEDIDO
 (
    ID_PEDIDO            char(256) not null,
+   EMPRESA              char(256) not null,
    FECHA_PEDIDO         date,
-   PROVEEDOR            char(256),
    primary key (ID_PEDIDO)
+);
+
+/*==============================================================*/
+/* Table: PROVEEDOR                                             */
+/*==============================================================*/
+create table PROVEEDOR
+(
+   EMPRESA              char(256) not null,
+   NOMBRE_REPRESENTANTE char(256),
+   DOMICILIO            char(256),
+   TELEFONO             char(8),
+   primary key (EMPRESA)
 );
 
 /*==============================================================*/
@@ -106,6 +120,9 @@ alter table LOTE add constraint FK_VIENE_CON foreign key (MARCA)
 
 alter table MEDICAMENTO add constraint FK_CONTIENE foreign key (ID_VENTA)
       references VENTA (ID_VENTA) on delete restrict on update restrict;
+
+alter table PEDIDO add constraint FK_RELATIONSHIP_7 foreign key (EMPRESA)
+      references PROVEEDOR (EMPRESA) on delete restrict on update restrict;
 
 alter table VARIEDAD add constraint FK_TIENE foreign key (NOMBREMED)
       references MEDICAMENTO (NOMBREMED) on delete restrict on update restrict;
