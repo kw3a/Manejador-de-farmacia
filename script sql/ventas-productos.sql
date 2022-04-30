@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     28/4/2022 21:14:51                           */
+/* Created on:     29/4/2022 18:56:43                           */
 /*==============================================================*/
 
 
@@ -26,7 +26,7 @@ drop table if exists VENTA;
 create table CLIENTE
 (
    CI_CLI               char(8) not null,
-   NOMBRE_CLI           char(256),
+   NOMBRE_CLI           char(255),
    PUNTOS               int,
    primary key (CI_CLI)
 );
@@ -37,7 +37,7 @@ create table CLIENTE
 create table CONTIENE
 (
    ID_MEDICAMENTO       int not null,
-   ID_VENTA             char(256) not null,
+   ID_VENTA             char(255) not null,
    primary key (ID_MEDICAMENTO, ID_VENTA)
 );
 
@@ -50,7 +50,7 @@ create table DESECHADO
    FECHA_DESECHO        date,
    CANTIDAD_DESECHADA   int,
    TOTAL_PERDIDO        float(8,2),
-   MOTIVO_DESECHO       char(256)
+   MOTIVO_DESECHO       char(255)
 );
 
 /*==============================================================*/
@@ -59,10 +59,10 @@ create table DESECHADO
 create table MEDICAMENTO
 (
    ID_MEDICAMENTO       int not null,
-   NOMBRE_MEDICAMENTO   char(256),
+   NOMBRE_MEDICAMENTO   char(255),
    CONTENIDO            int,
-   UNIDADES_CONTENIDO   char(256),
-   MARCA                char(256),
+   UNIDADES_CONTENIDO   char(255),
+   MARCA                char(255),
    PRECIO               float(8,0),
    STOCK                int,
    primary key (ID_MEDICAMENTO)
@@ -73,14 +73,14 @@ create table MEDICAMENTO
 /*==============================================================*/
 create table PEDIDO
 (
-   ID_PEDIDO            char(256) not null,
+   ID_PEDIDO            char(255) not null,
    ID_MEDICAMENTO       int,
-   EMPRESA              char(256),
+   EMPRESA              char(255),
    FECHA_PEDIDO         date,
-   CANTIDAD_COMPRADA    char(10),
-   PRECIOUNITARIO       char(10),
-   PRECIOTOTAL          char(10),
-   FECHAVENCIMIENTO     char(10),
+   CANTIDAD_COMPRADA    int,
+   PRECIOUNITARIO       float(8,2),
+   PRECIOTOTAL          float(8,2),
+   FECHAVENCIMIENTO     date,
    primary key (ID_PEDIDO)
 );
 
@@ -89,9 +89,9 @@ create table PEDIDO
 /*==============================================================*/
 create table PROVEEDOR
 (
-   EMPRESA              char(256) not null,
-   NOMBRE_REPRESENTANTE char(256),
-   DOMICILIO            char(256),
+   EMPRESA              char(255) not null,
+   NOMBRE_REPRESENTANTE char(255),
+   DOMICILIO            char(255),
    TELEFONO             char(8),
    primary key (EMPRESA)
 );
@@ -102,8 +102,8 @@ create table PROVEEDOR
 create table VENDEDOR
 (
    CI_VEN               char(8) not null,
-   NOMBRE_VEN           char(256),
-   PUESTO               char(256),
+   NOMBRE_VEN           char(255),
+   PUESTO               char(255),
    primary key (CI_VEN)
 );
 
@@ -112,7 +112,7 @@ create table VENDEDOR
 /*==============================================================*/
 create table VENTA
 (
-   ID_VENTA             char(256) not null,
+   ID_VENTA             char(255) not null,
    CI_VEN               char(8),
    CI_CLI               char(8),
    VEN_CI               char(8),
