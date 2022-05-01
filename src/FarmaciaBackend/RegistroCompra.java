@@ -20,7 +20,7 @@ public class RegistroCompra {
         getConexion();
         }
        
-    public static void registrarCompra(String producto ,String proveedor, String cantidad , String preciounitario ,String preciototal){
+    public static void registrarCompra(String producto ,String proveedor, String cantidad , String preciounitario ,String preciototal, String fechaVencimiento){
          
         try{
         
@@ -29,19 +29,19 @@ public class RegistroCompra {
         
           
             
-            String query1 = "SELECT NOW();";
+            String query1 = "SELECT CURDATE();";
                 ResultSet  resultado = sql.executeQuery(query1);
                 String fecha ="";
                 while (resultado.next()) {     
                     //LA FECHA ES DEL TIPO DATETIME EN LA BASE DE DATOS
-                fecha = resultado.getString("NOW()");
+                fecha = resultado.getString("CURDATE()");
                 } 
                         
                         int PrecioUnitario=Integer.parseInt(preciounitario);
                         int Cantidad=Integer.parseInt(cantidad);
                         int TotalCompra=PrecioUnitario*Cantidad;
                         
-                        String query ="INSERT INTO pedido (producto, fecha_pedido, proveedor, cantidad, precio_unitario, precio_total) VALUES('"+producto+"', '"+fecha+"', '"+proveedor+"', "+cantidad+" , "+preciounitario+", "+TotalCompra+")";
+                        String query ="INSERT INTO pedido (producto, fecha_pedido, proveedor, cantidad, precio_unitario, precio_total, fechaVencimiento) VALUES('"+producto+"', '"+fecha+"', '"+proveedor+"', "+cantidad+" , "+preciounitario+", "+TotalCompra+", '"+fechaVencimiento+"')";
                        
                         sql.executeUpdate(query);
                         
