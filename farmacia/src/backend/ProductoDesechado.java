@@ -1,9 +1,7 @@
 package backend;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class ProductoDesechado {
     private Conexion conexion;
@@ -32,17 +30,38 @@ public class ProductoDesechado {
         PreparedStatement select = conn.prepareStatement(sqlSelect);
         select.setInt(1,idMedicamento);
         ResultSet rs = select.executeQuery();
-        int precioIndividual = rs.getInt(1);
-        int stock = rs.getInt(2);
-        if (stock >= cantidadAdesechar){
-            //actualizacion de stock tabla medicamento
-            res = precioIndividual;
-            int nuevaCantidad = stock - cantidadAdesechar;
-            String update = "UPDATE medicamento SET stock=? WHERE id_medicamento =?";
-            PreparedStatement up = conn.prepareStatement(update);
-            up.setInt(1,nuevaCantidad);
-            up.setInt(2,idMedicamento);
-            up.executeUpdate();
+        if (rs.next()){
+            int precioIndividual = rs.getInt(1);
+            int stock = rs.getInt(2);
+            if (stock >= cantidadAdesechar){
+                //actualizacion de stock tabla medicamento
+                res = precioIndividual;
+                int nuevaCantidad = stock - cantidadAdesechar;
+                String update = "UPDATE medicamento SET stock=? WHERE id_medicamento =?";
+                PreparedStatement up = conn.prepareStatement(update);
+                up.setInt(1,nuevaCantidad);
+                up.setInt(2,idMedicamento);
+                up.executeUpdate();
+            }
+        }
+        return res;
+    }
+    public ArrayList<Desecho> obtenerHistorial(Connection conn, Date fechaIni, Date fechaFin) throws SQLException {
+        ArrayList<Desecho> res = new ArrayList<>();
+        String selectSql = "SELECT id_medicamento,fecha_desecho,cantidad_desechada,total_perdido," +
+                "motivo_desecho FROM desechado WHERE (fecha_desecho>=? AND fecha_desecho<=?) ORDER BY fecha_desecho";
+        PreparedStatement select = conn.prepareStatement(selectSql);
+        select.setDate(1,fechaIni);
+        select.setDate(2,fechaFin);
+        ResultSet rs = select.executeQuery();
+        while (rs.next()){
+            int idMed = rs.getInt(1);
+            Date fechaDesecho = rs.getDate(2);
+            int cantidadDesechada = rs.getInt(3);
+            float totalPerdido= rs.getFloat(4);
+            String motivo_desecho = rs.getString(5);
+            Desecho act = new Desecho(idMed, fechaDesecho, totalPerdido, cantidadDesechada, motivo_desecho);
+            res.add(act);
         }
         return res;
     }

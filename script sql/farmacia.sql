@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-04-2022 a las 02:42:35
+-- Tiempo de generación: 01-05-2022 a las 01:29:39
 -- Versión del servidor: 10.6.3-MariaDB
 -- Versión de PHP: 8.0.8
 
@@ -126,8 +126,6 @@ CREATE TABLE `venta` (
   `ID_VENTA` char(255) NOT NULL,
   `CI_VEN` char(8) DEFAULT NULL,
   `CI_CLI` char(8) DEFAULT NULL,
-  `VEN_CI` char(8) DEFAULT NULL,
-  `CLI_CI` char(8) DEFAULT NULL,
   `TOTAL` float(8,2) DEFAULT NULL,
   `FECHA_VENTA` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
