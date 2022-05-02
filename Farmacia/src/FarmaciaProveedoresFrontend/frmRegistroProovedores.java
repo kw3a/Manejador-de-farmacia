@@ -4,6 +4,8 @@
  */
 package FarmaciaProveedoresFrontend;
 
+import FarmaciaProveedoresBackend.RegistroProveedores;
+
 /**
  *
  * @author EMA
@@ -13,6 +15,7 @@ public class frmRegistroProovedores extends javax.swing.JFrame {
     /**
      * Creates new form frmRegistroProovedores
      */
+    RegistroProveedores registro=new RegistroProveedores();
     public frmRegistroProovedores() {
         initComponents();
     }
@@ -63,6 +66,11 @@ public class frmRegistroProovedores extends javax.swing.JFrame {
         jLabel6.setText("TELEFONO");
 
         btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("CANCELAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +148,21 @@ public class frmRegistroProovedores extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        txtNombre.setText("");
+        txtEmpresa.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+        String nombre=txtNombre.getText();
+        String empresa=txtEmpresa.getText();
+        String telefonot=txtTelefono.getText();
+        int telefono= Integer.parseInt(telefonot);
+        String direccion=txtDireccion.getText();
+        registro.registrar(nombre, empresa, direccion, telefono);
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
