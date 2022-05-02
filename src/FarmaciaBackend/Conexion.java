@@ -19,7 +19,7 @@ public class Conexion {
 		String BD = "jdbc:mysql://localhost:3306/farmacia" +
 				"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String usuario = "root";
-		String pass = "";
+		String pass = "admin";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("conexion exitosa");
