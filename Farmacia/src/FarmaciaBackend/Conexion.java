@@ -6,6 +6,7 @@ package FarmaciaBackend;
 
 import com.sun.org.apache.bcel.internal.classfile.PMGClass;
 import java.sql.*;
+import java.util.Date;
 
 public class Conexion {
 	private Connection conn = null;
@@ -13,10 +14,11 @@ public class Conexion {
         
         public static void main(String[] args) {
         getConexion();
+        obtenerfecha();
         }
 
 	public static Connection getConexion(){
-		String BD = "jdbc:mysql://localhost:3306/farmacia" +
+		String BD = "jdbc:mysql://localhost:3306/pruebafarmacia" +
 				"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String usuario = "root";
 		String pass = "admin";
@@ -30,5 +32,10 @@ public class Conexion {
 			return null;
 		}
 	}
+        
+        public static void obtenerfecha(){
+        Date fecha=new Date();
+            System.out.println(fecha);
+        }
         
 }

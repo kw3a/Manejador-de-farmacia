@@ -4,6 +4,8 @@
  */
 package FarmaciaMedicamentoFrontend;
 
+import java.util.Date;
+
 /**
  *
  * @author EMA
@@ -13,6 +15,9 @@ public class Medicamento extends javax.swing.JFrame {
     /**
      * Creates new form Medicamento
      */
+    frmMedicamentosVencidos vencidos=new frmMedicamentosVencidos();
+    frmModificarMedicamento modif=new frmModificarMedicamento();
+    frmRegistroMedicamento regis=new frmRegistroMedicamento();
     public Medicamento() {
         initComponents();
     }
@@ -27,17 +32,35 @@ public class Medicamento extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEntrarRegistroMedicamento = new javax.swing.JButton();
+        btnEntrarModificarMedicamento = new javax.swing.JButton();
+        btnEntrarverMedicamentosVencidos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         jLabel1.setText("MEDICAMENTO FARMACIA");
 
-        jButton1.setText("REGISTRO MEDICAMENTO");
+        btnEntrarRegistroMedicamento.setText("REGISTRO MEDICAMENTO");
+        btnEntrarRegistroMedicamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarRegistroMedicamentoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("MODIFICAR MEDICAMENTO");
+        btnEntrarModificarMedicamento.setText("MODIFICAR MEDICAMENTO");
+        btnEntrarModificarMedicamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarModificarMedicamentoActionPerformed(evt);
+            }
+        });
+
+        btnEntrarverMedicamentosVencidos.setText("MEDICAMENTOS VENCIDOS");
+        btnEntrarverMedicamentosVencidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarverMedicamentosVencidosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,8 +74,9 @@ public class Medicamento extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))))
+                            .addComponent(btnEntrarRegistroMedicamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEntrarModificarMedicamento, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                            .addComponent(btnEntrarverMedicamentosVencidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -61,14 +85,32 @@ public class Medicamento extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEntrarRegistroMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addComponent(btnEntrarModificarMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEntrarverMedicamentosVencidos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEntrarverMedicamentosVencidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarverMedicamentosVencidosActionPerformed
+        // TODO add your handling code here:
+        vencidos.setVisible(true);
+    }//GEN-LAST:event_btnEntrarverMedicamentosVencidosActionPerformed
+
+    private void btnEntrarRegistroMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarRegistroMedicamentoActionPerformed
+        // TODO add your handling code here:
+        regis.setVisible(true);
+    }//GEN-LAST:event_btnEntrarRegistroMedicamentoActionPerformed
+
+    private void btnEntrarModificarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarModificarMedicamentoActionPerformed
+        // TODO add your handling code here:
+        modif.setVisible(true);
+    }//GEN-LAST:event_btnEntrarModificarMedicamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,8 +148,9 @@ public class Medicamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEntrarModificarMedicamento;
+    private javax.swing.JButton btnEntrarRegistroMedicamento;
+    private javax.swing.JButton btnEntrarverMedicamentosVencidos;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
