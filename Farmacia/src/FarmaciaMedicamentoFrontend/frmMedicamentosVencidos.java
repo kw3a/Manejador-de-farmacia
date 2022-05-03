@@ -45,7 +45,7 @@ public  void obtenerfecha(){
         //Para obtener el mes y dia
         Date date2 = new Date();
         LocalDate localDate = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-         month = localDate.getMonthValue();
+        month = localDate.getMonthValue();
         System.out.println(""+month);
                 
         }
@@ -204,9 +204,10 @@ public  void obtenerfecha(){
 //            String query = "(SELECT id_medicamento FROM pedido WHERE MONTH < ?)";
 
 
-            String q = "SELECT * FROM pedido,medicamento WHERE pedido.id_medicamento IN (SELECT id_medicamento FROM pedido WHERE MONTH < ?)";
+            String q = "SELECT * FROM pedido,medicamento WHERE pedido.id_medicamento IN (SELECT id_medicamento FROM pedido WHERE MONTH(fecha_vencimiento" +
+                    ") <"+month +")";
             PreparedStatement sel = Conexion.getConexion().prepareStatement(q);
-            sel.setInt(1,month);
+//            sel.setInt(1,month);
 //            PreparedStatement select = Conexion.getConexion().prepareStatement(query2);
 //            select.setInt(1,month);
             ResultSet  resultado = sel.executeQuery();
