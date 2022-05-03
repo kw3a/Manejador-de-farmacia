@@ -1,5 +1,7 @@
 package backend;
 
+import FarmaciaBackend.Conexion;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,23 +9,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Venta {
-    Conexion conexion;
 
     public static void main(String[] args) {
         ArrayList<Integer> ej = new ArrayList<>();
-        ej.add(10);
+        ej.add(1);
         ArrayList<Integer> cant = new ArrayList<>();
         cant.add(1);
-        Conexion c = new Conexion();
-        Connection conn = c.getConn();
         try {
-            vender(conn, ej, cant, 124, 123);
+            vender(ej, cant, 124, 123);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static boolean vender(Connection conn, ArrayList<Integer> idProducto, ArrayList<Integer> cantidades, int ciVendedor, int ciCliente) throws SQLException {
+    public static boolean vender(ArrayList<Integer> idProducto, ArrayList<Integer> cantidades, int ciVendedor, int ciCliente) throws SQLException {
+        Connection conn = Conexion.getConexion();
         boolean res = false;
 //        conexion = new Conexion();
 //        Connection conn = conexion.getConn();
@@ -43,7 +43,7 @@ public class Venta {
                 int cantActual = cantidades.get(i);
                 int precioInd = preciosTotales.get(i);
                 updateMedicamento(conn, idActual, cantActual);
-                insertVenta(conn,idActual, precioInd, ciVendedor, ciCliente);
+                insertVenta(conn, precioInd, ciVendedor, ciCliente);
             }
         }
         return res;
@@ -57,13 +57,12 @@ public class Venta {
         update.executeUpdate();
     }
 
-    private static void insertVenta(Connection conn, int idProducto, int total, int ciVendedor, int ciCliente) throws SQLException {
-        String insertSql = "INSERT INTO venta (id_venta, total, ci_cli, ci_ven) VALUES (?,?,?,?)";
+    private static void insertVenta(Connection conn, int total, int ciVendedor, int ciCliente) throws SQLException {
+        String insertSql = "INSERT INTO venta (total, ci_cli, ci_ven) VALUES (?,?,?)";
         PreparedStatement insert = conn.prepareStatement(insertSql);
-        insert.setInt(1,idProducto);
-        insert.setInt(2,total);
-        insert.setInt(3,ciCliente);
-        insert.setInt(4,ciVendedor);
+        insert.setInt(1,total);
+        insert.setInt(2,ciCliente);
+        insert.setInt(3,ciVendedor);
         insert.executeUpdate();
     }
     private static boolean ventaIndValida(Connection conn, int idProducto, int cantidad, ArrayList<Integer> preciosTotales) throws SQLException {

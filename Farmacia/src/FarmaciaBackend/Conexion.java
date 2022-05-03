@@ -18,7 +18,7 @@ public class Conexion {
         }
 
 	public static Connection getConexion(){
-		String BD = "jdbc:mysql://localhost:3306/pruebafarmacia" +
+		String BD = "jdbc:mysql://localhost:3306/farmacia" +
 				"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String usuario = "root";
 		String pass = "admin";

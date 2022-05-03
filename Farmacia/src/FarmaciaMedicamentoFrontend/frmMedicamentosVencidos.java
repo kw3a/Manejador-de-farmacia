@@ -5,6 +5,8 @@
 package FarmaciaMedicamentoFrontend;
 
 import FarmaciaBackend.Conexion;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
@@ -164,7 +166,7 @@ public  void obtenerfecha(){
         try {
             
             Statement sql2=Conexion.getConexion().createStatement();
-            String query2 = "SELECT * FROM medicamento,pedido WHERE MONTH(fecha_vencimiento) = "+month+" AND IDPEDIDO=ID_MEDICAMENTO";
+            String query2 = "SELECT * FROM medicamento,pedido WHERE MONTH(fecha_vencimiento) = "+month+"";
             ResultSet  resultado = sql2.executeQuery(query2);
             
             while(resultado.next()){
@@ -195,9 +197,19 @@ public  void obtenerfecha(){
         DefaultTableModel modelo=new DefaultTableModel(null,titulos);
         try {
             
-            Statement sql2=Conexion.getConexion().createStatement();
-            String query2 = "SELECT * FROM medicamento,pedido WHERE MONTH(fecha_vencimiento) < "+month+" AND IDPEDIDO=ID_MEDICAMENTO";
-            ResultSet  resultado = sql2.executeQuery(query2);
+//            Statement sql2=Conexion.getConexion().createStatement();
+//            String query2 = "SELECT * FROM pedido,medicamento WHERE MONTH(fecha_vencimiento) < ?"+month+
+//                    "ORDER BY fecha_vencimiento";
+
+//            String query = "(SELECT id_medicamento FROM pedido WHERE MONTH < ?)";
+
+
+            String q = "SELECT * FROM pedido,medicamento WHERE pedido.id_medicamento IN (SELECT id_medicamento FROM pedido WHERE MONTH < ?)";
+            PreparedStatement sel = Conexion.getConexion().prepareStatement(q);
+            sel.setInt(1,month);
+//            PreparedStatement select = Conexion.getConexion().prepareStatement(query2);
+//            select.setInt(1,month);
+            ResultSet  resultado = sel.executeQuery();
             
             while(resultado.next()){
             

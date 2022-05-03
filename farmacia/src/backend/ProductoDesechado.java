@@ -1,13 +1,14 @@
 package backend;
 
+import FarmaciaBackend.Conexion;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class ProductoDesechado {
-    private Conexion conexion;
     public void desecharProductos(int cantidadAdesechar, int idMedicamento, String motivoDesecho) throws SQLException {
-        conexion = new Conexion();
-        Connection conn = conexion.getConn();
+//        conexion = new Conexion();
+        Connection conn = Conexion.getConexion();
         int precioIndividual = precioInd(conn, cantidadAdesechar, idMedicamento);
         if (precioIndividual != -1){
             //insert a la tabla desechado

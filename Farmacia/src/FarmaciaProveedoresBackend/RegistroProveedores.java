@@ -5,9 +5,12 @@
 package FarmaciaProveedoresBackend;
 
 import FarmaciaBackend.Conexion;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +22,7 @@ public class RegistroProveedores {
     try{
             
         Statement sql=Conexion.getConexion().createStatement();
-        String query1 = "SELECT NOMBRE,EMPRESA FROM PROVEEDORES  WHERE NOMBRE = '"+nombre+"' AND EMPRESA = '"+empresa+"'";
+        String query1 = "SELECT NOMBRE_REPRESENTANTE,EMPRESA FROM PROVEEDOR  WHERE NOMBRE_REPRESENTANTE = '"+nombre+"' AND EMPRESA = '"+empresa+"'";
         ResultSet  resultado = sql.executeQuery(query1);
         
                     if(resultado.next()){
@@ -27,7 +30,7 @@ public class RegistroProveedores {
                     }
                     else{
                         
-                        String query ="INSERT INTO Proveedores (nombre,empresa,direccion,telefono) "
+                        String query ="INSERT INTO Proveedor (nombre_representante,empresa,domicilio,telefono) "
                                 + "VALUES('"+nombre+"','"+empresa+"','"+direccion+"',"+telefono+")";
         
                         sql.executeUpdate(query);
@@ -38,5 +41,17 @@ public class RegistroProveedores {
         
             JOptionPane.showMessageDialog(null,ex.toString() );
         }
+    }
+
+    public static ArrayList<String> proveedores() throws SQLException {
+        ArrayList<String> res = new ArrayList<>();
+        String sql = "SELECT empresa FROM PROVEEDOR";
+        PreparedStatement select = Conexion.getConexion().prepareStatement(sql);
+        ResultSet rs = select.executeQuery();
+        while (rs.next()){
+            String empr = rs.getString(1);
+            res.add(empr);
+        }
+        return res;
     }
 }

@@ -5,9 +5,13 @@
 package FarmaciaProveedoresFrontend;
 
 import FarmaciaBackend.Conexion;
+import FarmaciaProveedoresBackend.RegistroCompra;
+import FarmaciaProveedoresBackend.RegistroProveedores;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -96,7 +100,11 @@ public class frmRegistroCompras extends javax.swing.JFrame {
         btnBuscarProveedores.setText("Buscar");
         btnBuscarProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarProveedoresActionPerformed(evt);
+                try {
+                    btnBuscarProveedoresActionPerformed(evt);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -223,27 +231,31 @@ public class frmRegistroCompras extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        
-            
             
             String producto = txtProducto.getText();
-            String Proovedor=cboProveedores.getSelectedItem().toString();
+            String Proovedor= cboProveedores.getSelectedItem().toString();
             System.out.println(Proovedor);
             String cantidad = txtCantidadProductos.getText();
             String preciounitario =txtPrecioUnitario.getText();
             String preciototal=lblPrecioTotal.getText();
-            
+
+        RegistroCompra.registrarCompra(producto, Proovedor, cantidad, preciounitario, preciototal);
             //subir a la Base de Datos
             //registrarCompra();
             
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void btnBuscarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProveedoresActionPerformed
+    private void btnBuscarProveedoresActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_btnBuscarProveedoresActionPerformed
         // TODO add your handling code here:
-  String productoBuscado=txtProducto.getText();
-        String proovedores[]={"proveedor1"+productoBuscado,"proovedor2"+productoBuscado,"proovedor3"+productoBuscado,
-                              "proovedor4"+productoBuscado,"proovedor5"+productoBuscado,"proovedor6"+productoBuscado};
-        DefaultComboBoxModel comboModel=new DefaultComboBoxModel(proovedores);
+        String productoBuscado=txtProducto.getText();
+        ArrayList<String> rs = RegistroProveedores.proveedores();
+        String proveedores[] = new String[rs.size()];
+        for (int i = 0; i < rs.size(); i++) {
+            proveedores[i] = rs.get(i);
+        }
+//        String proovedores[]={"proveedor1"+productoBuscado,"proovedor2"+productoBuscado,"proovedor3"+productoBuscado,
+//                              "proovedor4"+productoBuscado,"proovedor5"+productoBuscado,"proovedor6"+productoBuscado};
+        DefaultComboBoxModel comboModel=new DefaultComboBoxModel(proveedores);
         cboProveedores.setModel(comboModel);
     }//GEN-LAST:event_btnBuscarProveedoresActionPerformed
 

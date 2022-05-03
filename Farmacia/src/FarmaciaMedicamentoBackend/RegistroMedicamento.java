@@ -15,11 +15,7 @@ import javax.swing.JOptionPane;
  * @author EMA
  */
 public class RegistroMedicamento {
-   
-    
-    
-    
-    
+
     public void registrar(String nombre,int contenido,String unidades,String marca,float precio,int Stock){
     try{
             

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-05-2022 a las 01:29:39
+-- Tiempo de generación: 03-05-2022 a las 03:18:00
 -- Versión del servidor: 10.6.3-MariaDB
 -- Versión de PHP: 8.0.8
 
@@ -41,7 +41,7 @@ CREATE TABLE `cliente` (
 
 CREATE TABLE `contiene` (
   `ID_MEDICAMENTO` int(11) NOT NULL,
-  `ID_VENTA` char(255) NOT NULL
+  `ID_VENTA` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -81,14 +81,14 @@ CREATE TABLE `medicamento` (
 --
 
 CREATE TABLE `pedido` (
-  `ID_PEDIDO` char(255) NOT NULL,
+  `ID_PEDIDO` int(255) NOT NULL,
   `ID_MEDICAMENTO` int(11) DEFAULT NULL,
   `EMPRESA` char(255) DEFAULT NULL,
   `FECHA_PEDIDO` date DEFAULT current_timestamp(),
   `CANTIDAD_COMPRADA` int(11) DEFAULT NULL,
-  `PRECIOUNITARIO` float(8,2) DEFAULT NULL,
-  `PRECIOTOTAL` float(8,2) DEFAULT NULL,
-  `FECHAVENCIMIENTO` date DEFAULT NULL
+  `PRECIO_UNITARIO` float(8,2) DEFAULT NULL,
+  `PRECIO_TOTAL` float(8,2) DEFAULT NULL,
+  `FECHA_VENCIMIENTO` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -123,7 +123,7 @@ CREATE TABLE `vendedor` (
 --
 
 CREATE TABLE `venta` (
-  `ID_VENTA` char(255) NOT NULL,
+  `ID_VENTA` int(255) NOT NULL,
   `CI_VEN` char(8) DEFAULT NULL,
   `CI_CLI` char(8) DEFAULT NULL,
   `TOTAL` float(8,2) DEFAULT NULL,
@@ -186,6 +186,28 @@ ALTER TABLE `venta`
   ADD PRIMARY KEY (`ID_VENTA`),
   ADD KEY `FK_COMPRA` (`CI_CLI`),
   ADD KEY `FK_VENDE` (`CI_VEN`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `medicamento`
+--
+ALTER TABLE `medicamento`
+  MODIFY `ID_MEDICAMENTO` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  MODIFY `ID_PEDIDO` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `venta`
+--
+ALTER TABLE `venta`
+  MODIFY `ID_VENTA` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
