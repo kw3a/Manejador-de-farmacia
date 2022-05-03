@@ -166,7 +166,7 @@ public  void obtenerfecha(){
         try {
             
             Statement sql2=Conexion.getConexion().createStatement();
-            String query2 = "SELECT * FROM medicamento,pedido WHERE MONTH(fecha_vencimiento) = "+month+"";
+            String query2 = "SELECT * FROM medicamento,pedido WHERE MONTH(fecha_vencimiento) = "+month+" AND medicamento.id_medicamento=pedido.id_medicamento";
             ResultSet  resultado = sql2.executeQuery(query2);
             
             while(resultado.next()){
@@ -204,8 +204,7 @@ public  void obtenerfecha(){
 //            String query = "(SELECT id_medicamento FROM pedido WHERE MONTH < ?)";
 
 
-            String q = "SELECT * FROM pedido,medicamento WHERE pedido.id_medicamento IN (SELECT id_medicamento FROM pedido WHERE MONTH(fecha_vencimiento" +
-                    ") <"+month +")";
+            String q = "SELECT * FROM pedido,medicamento WHERE MONTH(fecha_vencimiento)<"+month+" AND medicamento.id_medicamento=pedido.id_medicamento" ;
             PreparedStatement sel = Conexion.getConexion().prepareStatement(q);
 //            sel.setInt(1,month);
 //            PreparedStatement select = Conexion.getConexion().prepareStatement(query2);
