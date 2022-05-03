@@ -6,9 +6,9 @@ package FarmaciaProveedoresBackend;
 
 import FarmaciaBackend.Conexion;
 import static FarmaciaBackend.Conexion.getConexion;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,5 +44,23 @@ public class RegistroCompra {
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,ex.toString() );
         }
+    }
+
+    public static String[] listaIdMedicamento() throws SQLException {
+            String sql = "SELECT id_medicamento FROM medicamento";
+            PreparedStatement select = Conexion.getConexion().prepareStatement(sql);
+            ResultSet rs = select.executeQuery();
+            String count = "SELECT COUNT(id_medicamento) FROM medicamento";
+            PreparedStatement cn = Conexion.getConexion().prepareStatement(count);
+            ResultSet tam = cn.executeQuery();
+            tam.next();
+            int size = tam.getInt(1);
+            String[] res = new String[size];
+            int contador = 0;
+            while (rs.next()){
+                res[0] = rs.getString(1);
+                contador++;
+            }
+            return res;
     }
 }
