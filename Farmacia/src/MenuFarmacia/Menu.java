@@ -6,6 +6,9 @@ package MenuFarmacia;
 
 import FarmaciaMedicamentoFrontend.Medicamento;
 import FarmaciaProveedoresFrontend.Provedores;
+import alerta.Alerta;
+import frontend.AgregarFactura;
+import frontend.RegistroDesechos;
 
 /**
  *
@@ -52,9 +55,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jButton3.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt) {JButton3ActionPerformed(evt);}
+        });
+
+        jButton4.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt) {JButton4ActionPerformed(evt);}
+        });
+
+        jButton5.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt) {JButton5ActionPerformed(evt);}
+        });
+
         jButton3.setText("VENTAS");
 
-        jButton4.setText("ALMACEN");
+        jButton4.setText("DESECHOS");
 
         jButton5.setText("ALERTA");
 
@@ -116,6 +131,21 @@ public class Menu extends javax.swing.JFrame {
         Medicamento med=new Medicamento();
         med.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JButton3ActionPerformed(java.awt.event.ActionEvent evt){
+        AgregarFactura fc = new AgregarFactura();
+        fc.setVisible(true);
+    }
+
+    private void JButton5ActionPerformed(java.awt.event.ActionEvent evt){
+        Alerta al = new Alerta();
+        al.setVisible(true);
+    }
+
+    private void JButton4ActionPerformed(java.awt.event.ActionEvent evt){
+        RegistroDesechos rs = new RegistroDesechos();
+        rs.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments

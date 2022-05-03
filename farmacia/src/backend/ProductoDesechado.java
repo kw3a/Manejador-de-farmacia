@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class ProductoDesechado {
-    public void desecharProductos(int cantidadAdesechar, int idMedicamento, String motivoDesecho) throws SQLException {
+    public static void desecharProductos(int cantidadAdesechar, int idMedicamento, String motivoDesecho) throws SQLException {
 //        conexion = new Conexion();
         Connection conn = Conexion.getConexion();
         int precioIndividual = precioInd(conn, cantidadAdesechar, idMedicamento);
@@ -25,7 +25,7 @@ public class ProductoDesechado {
 
     }
 
-    private int precioInd(Connection conn, int cantidadAdesechar, int idMedicamento) throws SQLException {
+    private static int precioInd(Connection conn, int cantidadAdesechar, int idMedicamento) throws SQLException {
         int res = -1;
         String sqlSelect = "SELECT precio,stock FROM medicamento WHERE id_medicamento =?";
         PreparedStatement select = conn.prepareStatement(sqlSelect);
@@ -47,13 +47,14 @@ public class ProductoDesechado {
         }
         return res;
     }
-    public ArrayList<Desecho> obtenerHistorial(Connection conn, Date fechaIni, Date fechaFin) throws SQLException {
+    public static ArrayList<Desecho> obtenerHistorial() throws SQLException {
+        Connection conn = Conexion.getConexion();
         ArrayList<Desecho> res = new ArrayList<>();
         String selectSql = "SELECT id_medicamento,fecha_desecho,cantidad_desechada,total_perdido," +
-                "motivo_desecho FROM desechado WHERE (fecha_desecho>=? AND fecha_desecho<=?) ORDER BY fecha_desecho";
+                "motivo_desecho FROM desechado ORDER BY fecha_desecho";
         PreparedStatement select = conn.prepareStatement(selectSql);
-        select.setDate(1,fechaIni);
-        select.setDate(2,fechaFin);
+//        select.setDate(1,fechaIni);
+//        select.setDate(2,fechaFin);
         ResultSet rs = select.executeQuery();
         while (rs.next()){
             int idMed = rs.getInt(1);

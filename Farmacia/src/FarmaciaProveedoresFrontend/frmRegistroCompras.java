@@ -203,8 +203,7 @@ public class frmRegistroCompras extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Proovedor=cboProveedores.getSelectedItem().toString();
             System.out.println(Proovedor);
-              
-        
+
         
     }//GEN-LAST:event_cboProveedoresActionPerformed
 
