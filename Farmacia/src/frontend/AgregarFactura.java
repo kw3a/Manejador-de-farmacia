@@ -32,8 +32,7 @@ public class AgregarFactura extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        medicamentos = new ArrayList<>();
-        cantidades = new ArrayList<>();
+
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -108,11 +107,7 @@ public class AgregarFactura extends javax.swing.JFrame {
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    btnGuardarActionPerformed(evt);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+                btnGuardarActionPerformed(evt);
             }
         });
 
@@ -218,10 +213,6 @@ public class AgregarFactura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-       
-    }//GEN-LAST:event_txtNombreActionPerformed
-
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         nombre = Integer.parseInt(txtNombre.getText());
         cantidad = Integer.parseInt(txtCantidad.getText());
@@ -246,6 +237,10 @@ public class AgregarFactura extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+
+    }//GEN-LAST:event_txtNombreActionPerformed
     
     private void cargarTabla(){
         DefaultTableModel listMedicament = (DefaultTableModel) tabMedicamento.getModel();

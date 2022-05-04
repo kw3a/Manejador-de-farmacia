@@ -49,6 +49,34 @@ public class Venta {
         return res;
     }
 
+    public static float getPrecioUnitario(int id_Medicamento){
+        float res = -1;
+        String sql = "SELECT precio FROM medicamento WHERE id_medicamento="+id_Medicamento;
+        try {
+            PreparedStatement ps = Conexion.getConexion().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            res = rs.getFloat(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public static String getNombre(int id_medicamento){
+        String res = "";
+        String sql = "SELECT nombre_medicamento FROM medicamento WHERE id_medicamento ="+id_medicamento;
+        try {
+            PreparedStatement ps = Conexion.getConexion().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            res = rs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
     private static void updateMedicamento(Connection conn, int idProducto, int cantidad) throws SQLException {
         String selectSql = "UPDATE medicamento SET stock=stock-? WHERE id_medicamento=?";
         PreparedStatement update =  conn.prepareStatement(selectSql);
