@@ -102,7 +102,11 @@ public class frmRegistroCompras extends javax.swing.JFrame {
         btnBuscarProveedores.setText("Buscar");
         btnBuscarProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarProveedoresActionPerformed(evt);
+                try {
+                    btnBuscarProveedoresActionPerformed(evt);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
