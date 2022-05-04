@@ -32,7 +32,8 @@ public class AgregarFactura extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        medicamentos = new ArrayList<>();
+        cantidades = new ArrayList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -107,7 +108,11 @@ public class AgregarFactura extends javax.swing.JFrame {
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                try {
+                    btnGuardarActionPerformed(evt);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -220,8 +225,8 @@ public class AgregarFactura extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         nombre = Integer.parseInt(txtNombre.getText());
         cantidad = Integer.parseInt(txtCantidad.getText());
-        precio = Integer.parseInt(txtPrecio.getText());
-        total = txtTotal.getText();
+//        precio = Integer.parseInt(txtPrecio.getText());
+//        total = txtTotal.getText();
         medicamentos.add(nombre);
         cantidades.add(cantidad);
         cargarTabla();
@@ -246,17 +251,14 @@ public class AgregarFactura extends javax.swing.JFrame {
         DefaultTableModel listMedicament = (DefaultTableModel) tabMedicamento.getModel();
         //listMedicament.setRowCount(100);
         int Columnas;
+        float precioUnit = Venta.getPrecioUnitario(nombre);
         Object[] fila = new Object[4];
-        fila[0] = nombre;
+        fila[0] = Venta.getNombre(nombre);
         fila[1] = cantidad;
-        fila[2] = precio;
-        fila[3] = total;
+        fila[2] = precioUnit;
+        fila[3] = precioUnit*cantidad;
         listMedicament.addRow(fila);
-        //agregar una fila de medicamentos a una lista
-//        lista[i] = fila;
-//        i++;
-//        System.out.print(" "+i);
-  
+
     }
     /**
      * @param args the command line arguments

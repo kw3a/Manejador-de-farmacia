@@ -45,6 +45,20 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+
+
+        jButton3.setText("VENTAS");
+
+        jButton4.setText("Desechos");
+
+        jButton5.setText("ALERTA");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("MENU");
+
+        jButton6.setText("lista de desechos");
+
         jButton1.setText("Medicamentos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,23 +72,36 @@ public class Menu extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jButton3.setText("VENTAS");
-
-        jButton4.setText("Desechos");
-
-        jButton5.setText("ALERTA");
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MENU");
-
-        jButton6.setText("lista de desechos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+
+
+
+
 
         jButton7.setText("Cerrar");
 
@@ -133,11 +160,6 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Provedores ter=new Provedores();
-        ter.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -145,21 +167,41 @@ public class Menu extends javax.swing.JFrame {
         med.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Provedores ter=new Provedores();
+        ter.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt){
+        AgregarFactura fc = new AgregarFactura();
+        fc.setVisible(true);
+    }
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt){
+        RegistroDesechos rs = new RegistroDesechos();
+        rs.setVisible(true);
+    }
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt){
+        Alerta al = new Alerta();
+        al.setVisible(true);
+    }
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         Desechos ds = new Desechos();
         ds.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void JButton3ActionPerformed(java.awt.event.ActionEvent evt){
-        AgregarFactura fc = new AgregarFactura();
-        fc.setVisible(true);
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt){
+        this.dispose();
     }
 
-    private void JButton5ActionPerformed(java.awt.event.ActionEvent evt){
-        Alerta al = new Alerta();
-        al.setVisible(true);
-    }
+
+
+
+
 
     
 
