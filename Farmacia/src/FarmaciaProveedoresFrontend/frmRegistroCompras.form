@@ -35,9 +35,9 @@
                       <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jLabel6" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" pref="105" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lblPrecioTotal" max="32767" attributes="0"/>
+                              <Component id="txtFechaVencimiento" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel1" min="-2" pref="222" max="-2" attributes="0"/>
@@ -50,15 +50,26 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtCantidadProductos" max="32767" attributes="0"/>
-                                      <Component id="txtProducto" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cboProveedores" alignment="0" pref="237" max="32767" attributes="0"/>
+                                      <Component id="jComboBox1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblPrecioUnitario" min="-2" pref="105" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtPrecioUnitario" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel6" max="32767" attributes="0"/>
+                                  <Component id="lblPrecioUnitario" pref="105" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtPrecioUnitario" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="lblPrecioTotal" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -86,18 +97,20 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="lblProducto" max="32767" attributes="0"/>
-                  <Component id="txtProducto" pref="34" max="32767" attributes="0"/>
+                  <Component id="lblProducto" pref="34" max="32767" attributes="0"/>
+                  <Component id="jComboBox1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnBuscarProveedores" pref="39" max="32767" attributes="0"/>
-                  <Component id="lblProveedores" max="32767" attributes="0"/>
-                  <Component id="cboProveedores" max="32767" attributes="0"/>
+                  <Component id="btnBuscarProveedores" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblProveedores" alignment="3" max="32767" attributes="0"/>
+                      <Component id="cboProveedores" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -112,8 +125,13 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnCalcularTotal" pref="38" max="32767" attributes="0"/>
-                  <Component id="jLabel6" max="32767" attributes="0"/>
                   <Component id="lblPrecioTotal" pref="38" max="32767" attributes="0"/>
+                  <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jLabel2" max="32767" attributes="0"/>
+                  <Component id="txtFechaVencimiento" pref="38" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="26" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -136,10 +154,8 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblProducto">
       <Properties>
-        <Property name="text" type="java.lang.String" value="PRODUCTO"/>
+        <Property name="text" type="java.lang.String" value="ID_MEDICAMENTO"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtProducto">
     </Component>
     <Component class="javax.swing.JLabel" name="lblProveedores">
       <Properties>
@@ -241,6 +257,28 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="FECHA VENC"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFechaVencimiento">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -4,7 +4,7 @@
  */
 package FarmaciaMedicamentoFrontend;
 
-import FarmaciaBackend.Conexion;
+import backend.Conexion;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

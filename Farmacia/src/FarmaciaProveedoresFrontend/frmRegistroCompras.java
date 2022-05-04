@@ -4,18 +4,12 @@
  */
 package FarmaciaProveedoresFrontend;
 
-import FarmaciaBackend.Conexion;
-import FarmaciaProveedoresBackend.RegistroCompra;
-import FarmaciaProveedoresBackend.RegistroProveedores;
+import backend.RegistroCompra;
+import backend.RegistroProveedores;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,7 +36,6 @@ public class frmRegistroCompras extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         lblProducto = new javax.swing.JLabel();
-        txtProducto = new javax.swing.JTextField();
         lblProveedores = new javax.swing.JLabel();
         lblCantidad = new javax.swing.JLabel();
         txtCantidadProductos = new javax.swing.JTextField();
@@ -56,13 +49,16 @@ public class frmRegistroCompras extends javax.swing.JFrame {
         lblPrecioTotal = new javax.swing.JLabel();
         btnCalcularTotal = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtFechaVencimiento = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         jLabel1.setText("REGISTRO COMPRAS");
 
-        lblProducto.setText("PRODUCTO");
+        lblProducto.setText("ID_MEDICAMENTO");
 
         lblProveedores.setText("PROVEEDORES");
 
@@ -130,6 +126,18 @@ public class frmRegistroCompras extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("FECHA VENC");
+
+
+        DefaultComboBoxModel comboModel= null;
+        try {
+            comboModel = new DefaultComboBoxModel(RegistroCompra.listaIdMedicamento());
+            jComboBox1.setModel(comboModel);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,9 +153,9 @@ public class frmRegistroCompras extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblPrecioTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtFechaVencimiento))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
@@ -158,12 +166,19 @@ public class frmRegistroCompras extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtCantidadProductos)
-                                        .addComponent(txtProducto)
-                                        .addComponent(cboProveedores, 0, 237, Short.MAX_VALUE))))
+                                        .addComponent(cboProveedores, 0, 237, Short.MAX_VALUE)
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPrecioUnitario)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblPrecioUnitario, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPrecioUnitario))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblPrecioTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -181,16 +196,17 @@ public class frmRegistroCompras extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                    .addComponent(lblProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(jComboBox1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuscarProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(lblProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboProveedores))
+                    .addComponent(btnBuscarProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cboProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -202,8 +218,12 @@ public class frmRegistroCompras extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCalcularTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblPrecioTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                    .addComponent(lblPrecioTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,12 +249,10 @@ public class frmRegistroCompras extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        txtProducto.setText("");
+        //txtProducto.setText("");
         txtCantidadProductos.setText("");
         txtPrecioUnitario.setText("");
-        String proovedores[]={"sin Proveedores"};
-        DefaultComboBoxModel comboModel=new DefaultComboBoxModel(proovedores);
-        cboProveedores.setModel(comboModel);
+        txtFechaVencimiento.setText("");
         lblPrecioTotal.setText(" 0 Bs");
         
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -247,14 +265,16 @@ public class frmRegistroCompras extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
             
-            String producto = txtProducto.getText();
-            String Proovedor= cboProveedores.getSelectedItem().toString();
-            System.out.println(Proovedor);
-            String cantidad = txtCantidadProductos.getText();
-            String preciounitario =txtPrecioUnitario.getText();
-            String preciototal=lblPrecioTotal.getText();
+            //String producto = txtProducto.getText();
+        String producto = jComboBox1.getSelectedItem().toString();
+        String fecha = txtFechaVencimiento.getText();
+        String Proovedor= cboProveedores.getSelectedItem().toString();
+//        System.out.println(Proovedor);
+        String cantidad = txtCantidadProductos.getText();
+        String preciounitario =txtPrecioUnitario.getText();
+//        String preciototal=lblPrecioTotal.getText();
 
-        RegistroCompra.registrarCompra(producto, Proovedor, cantidad, preciounitario, preciototal);
+        RegistroCompra.registrarCompra(producto, Proovedor, cantidad, preciounitario, fecha);
             //subir a la Base de Datos
             //registrarCompra();
             
@@ -262,14 +282,13 @@ public class frmRegistroCompras extends javax.swing.JFrame {
 
     private void btnBuscarProveedoresActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_btnBuscarProveedoresActionPerformed
         // TODO add your handling code here:
-        String productoBuscado=txtProducto.getText();
+        //String productoBuscado=txtProducto.getText();
         ArrayList<String> rs = RegistroProveedores.proveedores();
         String proveedores[] = new String[rs.size()];
         for (int i = 0; i < rs.size(); i++) {
             proveedores[i] = rs.get(i);
         }
-//        String proovedores[]={"proveedor1"+productoBuscado,"proovedor2"+productoBuscado,"proovedor3"+productoBuscado,
-//                              "proovedor4"+productoBuscado,"proovedor5"+productoBuscado,"proovedor6"+productoBuscado};
+
         DefaultComboBoxModel comboModel=new DefaultComboBoxModel(proveedores);
         cboProveedores.setModel(comboModel);
     }//GEN-LAST:event_btnBuscarProveedoresActionPerformed
@@ -333,7 +352,9 @@ public class frmRegistroCompras extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cboProveedores;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblCantidad;
     private javax.swing.JLabel lblPrecioTotal;
@@ -341,7 +362,7 @@ public class frmRegistroCompras extends javax.swing.JFrame {
     private javax.swing.JLabel lblProducto;
     private javax.swing.JLabel lblProveedores;
     private javax.swing.JTextField txtCantidadProductos;
+    private javax.swing.JTextField txtFechaVencimiento;
     private javax.swing.JTextField txtPrecioUnitario;
-    private javax.swing.JTextField txtProducto;
     // End of variables declaration//GEN-END:variables
 }

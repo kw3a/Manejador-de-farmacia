@@ -4,8 +4,8 @@
  */
 package FarmaciaMedicamentoFrontend;
 
-import FarmaciaBackend.Conexion;
-import FarmaciaMedicamentoBackend.RegistroMedicamento;
+import backend.Conexion;
+import backend.RegistroMedicamento;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;

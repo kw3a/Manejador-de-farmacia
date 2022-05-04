@@ -4,7 +4,7 @@
  */
 package FarmaciaProveedoresFrontend;
 
-import FarmaciaProveedoresBackend.RegistroProveedores;
+import backend.RegistroProveedores;
 
 /**
  *

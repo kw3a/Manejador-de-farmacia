@@ -1,7 +1,5 @@
 package backend;
 
-import FarmaciaBackend.Conexion;
-
 import java.sql.*;
 import java.util.ArrayList;
 
